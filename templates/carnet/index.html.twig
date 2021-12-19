@@ -1,0 +1,45 @@
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="responsive-table cartborder">
+			<table class="table striped">
+				<table class="table striped">
+					<thead>
+						<tr>
+							<th>Matricule</th>
+							<th>Active</th>
+							<th>Date de création</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for carnet in Carnets %}
+							<tr>
+								<td>{{ carnet.matricule }}</td>
+								<td>
+									<label class="form-switchCarnet mt-2">
+										<input type="checkbox" {{ (carnet.active) ? 'checked': ''}} disabled="true">
+										<span class="slider thin"></span>
+									</label>
+								</td>
+								<td>{{ carnet.createdAt | date("d/m/Y")}}</td>
+								<td>
+									<a href="{{ path('editCarnet',{id: carnet.id}) }}">
+										<i class="far fa-edit"></i>
+									</a>
+									<a href="{{ path('showCarnet',{id: carnet.id}) }}">
+										<i class="far fa-print"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/skripta.js"></script>
+{% endblock %}

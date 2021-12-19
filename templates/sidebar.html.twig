@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<header>
+		<div class="sidebar">
+			<header>
+				{# <a href="{{ path("index") }}">NAMAKO</a> #}
+			</header>
+			<ul id="navigation">
+				{% if is_granted('ROLE_ADMIN') %}
+					{# <li>
+						<a href="{{ path('listUser') }}">
+							<i class="far fa-user-shield"></i>Admin</a>
+					</li> #}
+				{% endif %}
+				<li>
+					<a href="{{ path('user') }}">
+						<i class="fal fa-id-badge"></i>Utilisateur</a>
+				</li>
+				 <li>
+					 <a href="{{ path('ticket') }}">
+						<i class="fal fa-ticket"></i>Ticket</a>
+				</li>
+				<li>
+					<a href="{{ path('index') }}">
+						<i class="far fa-book"></i>Carnet</a>
+				</li>
+			</ul>
+			<div class="logout">
+				{# <a href="{{path("app_logout")}}" class="deco">
+					<i class="fal fa-sign-out-alt"></i>
+				</a> #}
+			</div>
+		</div>
+		{% block javascripts %}
+			<script src="/assets/js/sidebar.js"></script>
+		{% endblock %}
+	</header>
+{% endblock %}

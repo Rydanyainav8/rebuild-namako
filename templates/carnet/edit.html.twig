@@ -1,0 +1,40 @@
+{% include "sidebar.html.twig" %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="subcontainer">
+			<div class="cart">
+				<div class="subcontainer2">
+					{{ form_start(form) }}
+					<div class="chT">
+						{{ form_label(form.matricule, 'Matricule')}}
+						{{ form_widget(form.matricule, {'attr':{'class':'form-control', 'readonly':'readonly'}}) }}
+					</div>
+					<div class="chT">
+						<label class="form-switchCarnetsl mt-2">
+							{{ form_label(form.active, 'Activer') }}
+							{{ form_widget(form.active) }}
+							<span class="slider thin"></span>
+						</label>
+					</div>
+					<div class="info">
+						<div class="infoicon">
+							<i class="far fa-info-square"></i>
+						</div>
+						<div class="infotext">Votre texte ne doit pas depasser les 40 mots</div> 
+					</div>
+					{{ form_errors(form.texte)}}
+					{{ form_label(form.texte, 'Verset biblique')}}
+					{{ form_widget(form.texte, {'attr':{'class':'forma-control'}}) }}
+					<button class="btn-Edit Sm" type="submit">Valider</button>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/skritpa.js"></script>
+	{# // <script src="https://cdn.jsdelivr.net/npm/axentix@1.3.3/dist/js/axentix.min.js"></script> #}
+{% endblock %}

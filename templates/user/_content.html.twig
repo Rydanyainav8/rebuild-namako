@@ -1,0 +1,99 @@
+<div class="responsive-table cartborder">
+	<table class="table striped">
+		<thead>
+			<tr>
+				{# <th>ID</th> #}
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Image</th>
+				<th>Age</th>
+				<th>Genre</th>
+				<th>Matricule</th>
+				<th>Solde</th>
+				<th>Qr</th>
+				<th>Crediter/Debiter</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr>
+					{# <td>{{ user.id }}</td> #}
+					<td>{{ user.lastname }}</td>
+					<td>{{ user.firstname }}</td>
+					<td>
+						<div class="img">
+							<img
+							class="photo" src="{{ asset('uploads/images/' ~ user.pdp) }}">
+						{# <img class="photo" src="{{ asset('uploads/images/default-avatar.jpg') }}" alt=""> #}
+						</div>
+					</td>
+					<td>{{ user.age }}</td>
+					<td>{{ user.gender }}</td>
+					<td>{{ user.matricule }}</td>
+					<td>
+						{{ user.solde }} Ar
+					</td>
+					<td>
+						<div class="img">
+							<img class="qr" src=" {{ qr_code_data_uri(user.matricule) }} ">
+						</div>
+					</td>
+					<td>
+						<div class="iconCD">
+							<a href="{{ path("crediter", {id: user.id}) }}">
+								<i class="fas fa-plus"></i>
+							</a>
+
+ 							{# <a href="{{ path("debiter", {id: user.id}) }}">
+								<i class="fas fa-minus"></i>
+							</a> #}
+						</div>
+					</td>
+					<td>
+						{# <a href="{{ path("print", {id: user.id}) }}">
+							<i class="far fa-print"></i>
+						</a>#}
+						<a href="{{ path("edituser", {id: user.id}) }}">
+							<i class="far fa-edit"></i>
+						</a> 
+						<a href="#" class="btnS modal-trigger" data-target="modal-delete" data-id="{{ user.id }}" data-prenom="{{ user.firstname }}">
+							<i class="far fa-trash-alt"></i>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{# suppression #}
+<div class="modal shadow-1 white falling" id="modal-delete" data-ax="modal">
+	<div class="modal-header">Supprimer un(e) person(ne)</div>
+	<div class="divider"></div>
+	<div class="modal-content"></div>
+	<div class="divider"></div>
+	<div class="modal-footer">
+		<a href="" class="btn-red">Valider</a>
+	</div>
+</div>
+<footer>
+	<ul class="pagination">
+		<li class="{{ (page == 1) ? "disabled": '' }}">
+			<a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}">
+				<i class="fas fa-angle-left"></i>
+			</a>
+		</li>
+		{% set pages = (total / limit)|round(0, 'ceil') %}
+		{% set var = page < pages %}
+		{% for item in 1..pages %}
+			<li class="{{ (page == item) ? 'active': '' }}">
+				<a href="?page={{ item }}">{{ item }}</a>
+			</li>
+		{% endfor %}
+		<li class="{{ (page == pages) ? 'disabled': '' }}">
+			<a href="{{ (var) ? '?page=' ~ (page + 1) : '' }}">
+				<i class="fas fa-angle-right"></i>
+			</a>
+		</li>
+	</ul>
+</footer>

@@ -1,0 +1,42 @@
+{% include "sidebar.html.twig" %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="subcontainer">
+			<div class="cart">
+				<div class="subcontainer2">
+					{{ form_start(form) }}
+					<div class="form-group">
+						<p for="">Numéro</p>
+						{{form_widget(form.numero, {'attr':{'class':'form-control'}})}}
+					</div>
+					<div class="chT" style="display: none">
+						{{form_widget(form.qr)}}
+					</div>
+					<div class="chT">
+						<p for="">Carnet</p>
+						{{form_widget(form.carnet)}}
+					</div>
+					<div class="chT">
+						<p>Activer / désactiver:
+						</p>
+						<label class="form-switchC mt-2">
+							{{form_widget(form.active)}}
+							<span class="slider thin"></span>
+						</label>
+					</div>
+
+					<div class="=chT">
+						<p for="">Date de création</p>
+						{{ form_widget(form.createdAt) }}
+					</div>
+					<div class='form-btn'>
+						<button class="btn-Edit">Valider</button>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

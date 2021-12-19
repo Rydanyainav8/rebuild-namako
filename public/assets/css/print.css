@@ -1,0 +1,121 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+.carte
+{
+    border: 1px solid black;
+}
+img
+{
+    width: 80px;
+    height: 80px;
+}
+.qr
+{
+    text-align: center;
+    margin: 10px 20px;
+}
+.flexena,
+.Gflex
+{
+    display: flex;
+}
+.texte,
+.right
+{
+    float: right;
+}
+
+.left
+{
+    float: left;
+    text-align: center;
+}
+.rw
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+.texte
+{
+    width: 400px;
+    max-height: 100px;
+    margin-left: 10px;
+    margin-top: 5px;
+    line-height: 20px;
+}
+.texte2
+{
+    margin-left: 10px;
+}
+.noPrint
+{
+    background: none;
+    border: 1px solid #00B4D8;
+    border-radius: 5px;
+    color: #00B4D8;
+    cursor: pointer;
+    padding: 7px 7px;
+}
+.noPrintBack
+{
+    color: #00B4D8;
+
+}
+.noPrint:hover
+{
+    background: #00B4D8;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+
+}
+.fa-arrow-left
+{
+    font-size: 40px;
+    color: #c0c0c0;
+    transition: 0.4s;
+}
+.fa-arrow-left:hover
+{
+    color: #00B4D8;
+    transition: 0.4s;
+
+}
+.boton
+{
+    text-align: center;
+}
+.flexi
+{
+    display: flex;
+    width: 150px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.noPrintBack
+{
+    flex: 1;
+}
+.noPrint
+{
+    flex: 1;
+}
+@media print
+{
+    .noPrint,
+    .noPrintBack
+    {
+        display: none;
+    }
+}
+.left
+{
+    line-height: 2px;
+}

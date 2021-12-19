@@ -1,0 +1,60 @@
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="subcontainer">
+			<div class="subcontainer2 cart">
+				<div class="row">
+					<h3>Ajouter un(e) person(ne)
+					</h3>
+					<div class="tsipika2"></div>
+
+					<div class="col-md-6 offset-md-3">
+						{{ form_start(form) }}
+						<div class='form-group'>
+							<label for="badges_lastname">Nom</label>
+							{{form_widget(form.lastname,{'attr':{'class':'form-control'}})}}
+						</div>
+						<div class='form-group'>
+							<label for="badges_firstname">Prénom</label>
+							{{form_widget(form.firstname,{'attr':{'class':'form-control'}})}}
+						</div>
+						<div class='form-group'>
+							<label for="badges_age">Age</label>
+							{{form_widget(form.age,{'attr':{'class':'form-control'}})}}
+						</div>
+						<div class="chB">
+							<label for="badges_gender">Genre</label>
+							{{ form_widget(form.gender,{'attr':{'class':'form-control'}}) }}
+						</div>
+						<div class="form-file">
+							<label for="badges_imageFile" class="btn-Up">Image</label>
+							{{ form_widget(form.imageFile,{'attr':{'class':'form-control', 'multiple accept':'image/png, image/jpeg'}}) }}
+							<div class="form-file-path"></div>
+						</div>
+						<div class="ch" style="display: none">
+							{{ form_widget(form.qr, {'attr':{'value':'0'}}
+							) }}
+						</div>
+						<div class="ch" style="display: none">{{form_widget(form.matricule, {'attr':{'value':'0'}}
+							)}}</div>
+						<div class="ch" style="display: none">
+							{{ form_widget(form.createdAt) }}</div>
+						<div class='chB'>
+							<button class="btn-Edit">Valider</button>
+						</div>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://cdn.jsdelivr.net/npm/axentix@1.3.3/dist/js/axentix.min.js"></script>
+
+	<script>
+		Axentix.updateInputs()
+	</script>
+{% endblock %}

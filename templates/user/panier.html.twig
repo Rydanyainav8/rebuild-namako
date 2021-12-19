@@ -1,0 +1,49 @@
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="responsive-table cartborder">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Numéro</th>
+						<th>Matricule Carnet</th>
+						<th>Solde</th>
+						<th>Quantité</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for dataTiket in dataTikets %}
+						<tr>
+							<td>{{dataTiket.tikets.numero}}</td>
+							<td>{{dataTiket.tikets.carnet}}</td>
+							<td>{{dataTiket.tikets.value}}</td>
+							<td>{{dataTiket.quantity}}</td>
+							<td>{{dataTiket.tikets.value * dataTiket.quantity}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Total:</td>
+						<td>{{ total }}</td>
+					</tr>
+
+					{# <button type="submit">Valider</button> #}
+				</tfoot>
+			</table>
+			{{ form_start(form)}}
+			<div class="ch" style="display: none">
+				{{ form_widget(form.total) }}
+			</div>
+			{# <button type="submit" class="btn-Edit">Valider</button> #}
+			{{ form_end(form)}}
+		</div>
+	</div>
+{% endblock %}

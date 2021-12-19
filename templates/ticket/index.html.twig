@@ -1,0 +1,41 @@
+{% include "sidebar.html.twig" %}
+
+
+{# variable personnalise #}
+{% set queryParams = app.request.query.all %}
+
+{% block body %}
+	{# {{ dump(queryString) }}} #}
+	<div class="container">
+		<a href="{{ path("addTicket") }}" class="btn-add">
+			<i class="fad fa-plus fa-2x"></i>
+		</a>
+		<div class="grix xs1 sm5 gutter-0">
+			<div class="col-xs1 Filt">
+				<h3>Filtrer par carnet</h3>
+				<div class="tsipika"></div>
+				<form id="filters">
+					{% for carnet in carnets %}
+						{# verification si carnet est dans les parametres  #}
+						{% if queryParams is not empty and queryParams.carnets is defined %}
+							{% set checked = (carnet.id in queryParams.carnets) ? "checked":"" %}
+						{% else %}
+							{% set checked = "" %}
+						{% endif %}
+						<p>
+							<input type="checkbox" name="carnets[]" id="car{{ carnet.id }}" value="{{ carnet.id }}" {{ checked }}>
+							<label for="car{{ carnet.id }}">{{ carnet.matricule }}</label>
+						</p>
+						<input type="hidden" name="page" value="{{ page }}">
+					{% endfor %}
+				</form>
+			</div>
+			<div class="col-xs1 col-sm4" id="content">
+				{% include "ticket/_content.html.twig" %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/filter.js"></script>
+{% endblock %}

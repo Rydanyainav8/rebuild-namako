@@ -1,0 +1,48 @@
+{% include "sidebar.html.twig" %}
+
+
+{% set queryParams = app.request.query.all %}
+
+{% block body %}
+	<div class="container">
+		<div class="navbara">
+			<div class="navcont"></div>
+			<a href="{{ path("createUser") }}" class="btn-add">
+				<i class="far fa-user-plus fa-2x"></i>
+			</a>
+			<div class="searchContainer">
+				{{ form_start(form)}}
+				<i class="fa fa-search searchIcon"></i>
+				{{ form_row(form.mots, {'attr':{'placeholder':'Rechercher...','class':'searchBox'}}) }}
+				<input type="submit" value="Chercher" class="searchButton">
+				{{ form_end(form)}}
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="message">
+			{% for message in app.flashes('error') %}
+				<div class="errorFlash">
+					{{message}}
+				</div>
+			{% endfor %}
+		</div>
+		{% include "user/_content.html.twig" %}
+		{# {% if app.flashes %}
+													<div class="msg">
+														<h2>Aucun résultat</h2>
+														<div class="msgemoji">
+															<i class="fal fa-sad-tear"></i>
+														</div>
+													</div>
+												{% else %}
+												{% endif %} #}
+	</div>
+{% endblock  %}
+{% block javascripts %}
+	<script src="/assets/js/filter.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axentix@1.3.3/dist/js/axentix.min.js"></script>
+	<script src="/assets/js/script.js"></script>
+{% endblock %}

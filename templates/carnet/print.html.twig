@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+<link rel="stylesheet" href="/assets/css/print.css"/>
+{% block body %}
+	<div class="flexi">
+		<div class="noPrintBack">
+			<a href="{{path("index")}}"><i class="fas fa-arrow-left"></i></a>
+		</div>
+		<div class="boton">
+			<button onclick="window.print()" class="noPrint">Imprimer</button>
+		</div>
+	</div>
+	
+	<div id="printJsDoc">
+		<div class="containerx">
+			<div class="rw">
+				{% for carnet in carnets %}
+				<div class="">
+					<div class="carte">
+						<div class="Gflex">
+							<div class="flexena">
+								<div class="right">
+									{% for carnetonly in carnetonlys %}
+										<div class="texte">{{carnetonly.texte}}</div>									
+									{% endfor %}
+									<div class="texte2">
+									</div>
+								</div>
+							</div>
+							<div class="left">
+								<h5>Ticket Namako</h5>
+								<div class="matricule">N°: {{carnet.numero}}</div>
+								<div class="qr">
+									<img src=" {{ qr_code_data_uri(carnet.numero) }} "/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	 {# <button type="button" onclick="printForm()">
+    	Print Form
+ 	</button> #}
+
+{% endblock %}
+
+{% block javascripts %}
+	{# // <script src="/assets/js/print.js"></script> #}
+    {# //   <script> #}
+    {# //      function display() {
+    //         window.print();
+    //      }
+    //   </script> #}
+{% endblock %}
+

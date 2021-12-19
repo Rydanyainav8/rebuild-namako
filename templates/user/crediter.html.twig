@@ -1,0 +1,100 @@
+
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="navbara">
+			<div class="searchContainer">
+				{{ form_start(form)}}
+				<i class="fa fa-search searchIcon"></i>
+				{{ form_row(form.mots, {'attr':{'placeholder':'Rechercher...','class':'searchBox'}}) }}
+				<input type="submit" value="Chercher" class="searchButton">
+				{{ form_end(form)}}
+			</div>
+		</div>
+		<div class="responsive-table cartborder">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Numéro</th>
+						<th>Matricule Carnet</th>
+						<th>Active</th>
+						<th>Qr Code</th>
+						<th>Date de création</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for ticket in tickets %}
+						{% for user in users %}
+							<tr>
+								<td>{{ ticket.id }}</td>
+								<td>{{ ticket.numero }}</td>
+								<td>{{ ticket.carnet }}</td>
+								<td>
+									<label class="form-switch mt-2">
+										<input type="checkbox" {{ (ticket.active) ? 'checked': ''}} disabled="true">
+										<span class="slider thin"></span>
+									</label>
+								</td>
+								<td></td>
+								<td>{{ ticket.createdAt | date("d/m/Y") }}</td>
+								<td>
+								{% if ticket.active == 0 %}
+									{# <a href="{{ path("addPanier", {idUser: user.id, numero: ticket.numero}) }}">
+										<i class="far fa-plus-square"></i>
+									</a> #}
+								{% else %}
+									Inutilisable
+								{% endif %}
+								</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+
+					{% if app.flashes %}
+						<div class="msg">
+							<h2>Aucun résultat</h2>
+							<div class="msgemoji">
+								<i class="fal fa-sad-tear"></i>
+							</div>
+						</div>
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+		
+			<footer>
+				{% set queryParams = app.request.query.all %}
+				{% set queryString = queryParams | filter((v, k) => k != "page" and k != "ajax") | url_encode %}
+
+				<ul class="pagination">
+					<li class="{{ (page == 1) ? "disabled": '' }}">
+						<a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}&{{ queryString }}">
+							<i class="fas fa-angle-left"></i>
+						</a>
+					</li>
+					{% set pages = (total / limit)|round(0, 'ceil') %}
+					{% set var = page < pages %}
+					{% for item in 1..pages %}
+						<li class="{{ (page == item) ? 'active': '' }}">
+							<a href="?page={{ item }}&{{ queryString }}">{{ item }}</a>
+						</li>
+					{% endfor %}
+					<li class="{{ (page == pages) ? 'disabled': '' }}">
+						<a href="{{ (var) ? '?page=' ~ (page + 1) : '' }}&{{ queryString }}">
+							<i class="fas fa-angle-right"></i>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		
+	</div>
+
+
+{% endblock %}
+{# {% block javascripts %}
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="/assets/js/search.js"></script>
+{% endblock %} #}

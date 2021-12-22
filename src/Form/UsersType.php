@@ -6,10 +6,13 @@ use App\Entity\Gender;
 use App\Entity\User;
 use Doctrine\DBAL\Types\DateImmutableType;
 use Doctrine\DBAL\Types\StringType;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +25,12 @@ class UsersType extends AbstractType
         $builder
             ->add('firstname')
             ->add('lastname')
-            ->add('username')
+            ->add('username', HiddenType::class,[
+                'data' => 'username'
+            ])
+            ->add('password', TextType::class,[
+                'data' => '123456789'
+            ])
             ->add('age')
             ->add('gender', EntityType::class, [
                 'class' => Gender::class,

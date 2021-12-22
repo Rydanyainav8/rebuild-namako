@@ -11,7 +11,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
+ * @ORM\Table(name="user", indexes={@ORM\Index(columns={"firstname", "lastname", "matricule"}, flags={"fulltext"})})
+ * 
  */
 class User implements UserInterface
 {
@@ -32,6 +33,12 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $password;
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -140,13 +147,18 @@ class User implements UserInterface
     }
 
     /**
-     * This method can be removed in Symfony 6.0 - is not needed for apps that do not check user passwords.
-     *
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
-        return null;
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 
     /**

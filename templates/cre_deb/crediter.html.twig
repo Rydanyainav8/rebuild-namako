@@ -42,9 +42,9 @@
 								<td>{{ ticket.createdAt | date("d/m/Y") }}</td>
 								<td>
 								{% if ticket.active == 0 %}
-									{# <a href="{{ path("addPanier", {idUser: user.id, numero: ticket.numero}) }}">
+									<a href="{{ path("addTicketToUser", {idUser: user.id, numero: ticket.numero}) }}">
 										<i class="far fa-plus-square"></i>
-									</a> #}
+									</a>
 								{% else %}
 									Inutilisable
 								{% endif %}

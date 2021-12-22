@@ -33,7 +33,8 @@ class TicketRepository extends ServiceEntityRepository
             ->setFirstResult(($page * $limit) - $limit)
             ->setMaxResults($limit);
         return $query->getQuery()->getResult();
-    }    /**
+    }
+    /**
      * @return void
      */
     public function getPaginatedInActivateTickets($page, $limit, $filters = null)
@@ -62,6 +63,55 @@ class TicketRepository extends ServiceEntityRepository
         }
         return $query->getQuery()->getSingleScalarResult();
     }
+    /**
+     * @return Ticket[]
+     */
+
+    public function desactiveTicket($numero)
+    {
+        // $entityManager = $this->getEntityManager();
+        // $query = $entityManager->createQuery(
+        //     'UPDATE t 
+        //     SET t.active = 1
+        //     WHERE t.numero = :numero'
+        // )
+        $query = $this->createQueryBuilder('t')
+            ->update()
+            ->set('t.active', 1)
+            ->where('t.numero = :numero')
+            ->setParameter('numero', $numero);
+        return $query->getQuery()->getResult();
+    }
+    /**
+     * @return Ticket[]
+     */
+    public function FindNumero($numero)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.numero = :numero')
+            ->setParameter('numero', $numero)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
+     * @return void
+     */
+    public function searchTicket($mots)
+    {
+        $query = $this->createQueryBuilder('t');
+
+        if ($mots != null) {
+            // $query->andWhere('MATCH_AGAINST(t.numerox) AGAINST(:mots boolean)>0')
+            //     ->setParameter('mots', $mots);
+            // $query->andWhere('MATCH_AGAINST(t.numero) AGAINST(:mots boolean)>0')
+            //     ->setParameter('mots', $mots);
+            $query->andWhere('t.numero LIKE :mots')
+                ->setParameter('mots', "%{$mots}%");
+        }
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Ticket[] Returns an array of Ticket objects
     //  */

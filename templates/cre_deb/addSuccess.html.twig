@@ -1,0 +1,30 @@
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="subcontainer">
+			<div class="subcontainer2 cart">
+				<center>
+					<p>Ticket ajouté</p>
+				</center>
+				<div class="flexena">
+					<div class="statDec">
+						<a href="{{ path("crediter", {id: idUser})}}">
+							<div class="blok">
+                                Ajouter un autre Ticket
+							</div>
+						</a>
+					</div>
+					<div class="statDec">
+						<a href="{{ path("crediterPanier", {idUser: idUser})}}">
+							<div class="blok2">
+								Valider les Tickets
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{# <i class="fas fa-arrow-left"></i> #}
+{% endblock %}

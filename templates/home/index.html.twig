@@ -1,0 +1,51 @@
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<center>
+			<h1>Bienvenue dans Namako</h1>
+		</center>
+		<div class="logoNamako">
+			<img src="/assets/css/logo namako.png" alt="">
+		</div>
+		<div class="pos">
+			<div class="flexena">
+				<div class="stat muted cart border">
+					<i class="far fa-book"></i>
+					<h3>Carnet</h3>
+					<div class="tsipika5"></div>
+					<div class="detail">
+						<div class="stat2">
+							<span class="carn">Total</span>
+							<span class="carn">Actif</span>
+							<span class="carn">Vendu</span>
+						</div>
+						<div class="stat2">
+							<div class="right">{{ totalCarnet }}</div>
+							<div class="right">{{ saleCarnet}}</div>
+							<div class="right">{{ activeCarnet }}</div>
+						</div>
+					</div>
+				</div>
+				<div class="stat muted cart border">
+					<i class="fal fa-ticket"></i>
+					<h3>Ticket</h3>
+					<div class="tsipika5"></div>
+
+					<div class="detail">
+						<div class="stat2">
+							<span class="tic">Total</span>
+							<span class="tic">Non distribué</span>
+							<span class="tic">Utilisé</span>
+						</div>
+						<div class="stat2">
+							<div class="right">{{ totalTicket }}</div>
+							<div class="right">{{ saleTicket }}</div>
+							<div class="right">{{ activeTicket }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

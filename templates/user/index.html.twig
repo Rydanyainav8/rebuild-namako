@@ -10,6 +10,7 @@
 			<a href="{{ path("createUser") }}" class="btn-add">
 				<i class="far fa-user-plus fa-2x"></i>
 			</a>
+			{# <a href="{{ path("app_login") }}" class="btn-Edit">Connexion</a> #}
 			<div class="searchContainer">
 				{{ form_start(form)}}
 				<i class="fa fa-search searchIcon"></i>
@@ -17,7 +18,6 @@
 				<input type="submit" value="Chercher" class="searchButton">
 				{{ form_end(form)}}
 			</div>
-
 		</div>
 	</div>
 
@@ -30,15 +30,6 @@
 			{% endfor %}
 		</div>
 		{% include "user/_content.html.twig" %}
-		{# {% if app.flashes %}
-													<div class="msg">
-														<h2>Aucun résultat</h2>
-														<div class="msgemoji">
-															<i class="fal fa-sad-tear"></i>
-														</div>
-													</div>
-												{% else %}
-												{% endif %} #}
 	</div>
 {% endblock  %}
 {% block javascripts %}

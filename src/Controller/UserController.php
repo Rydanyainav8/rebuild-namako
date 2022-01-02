@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\MontantDebType;
 use App\Form\SearchUserType;
 use App\Form\UsersType;
 use App\Repository\GenderRepository;
@@ -31,6 +32,8 @@ class UserController extends AbstractController
         
         $form = $this->createForm(SearchUserType::class);
         $filters = $request->get("genders");
+
+        // $request->getSession()->invalidate();
 
         $limit = 10;
         $page = (int)$request->query->get("page", 1);
@@ -121,7 +124,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edituser")
      */
-    public function edit(user $user, Request $request, SluggerInterface $slugger, EntityManagerInterface $em)
+    public function edit(User $user, Request $request, SluggerInterface $slugger, EntityManagerInterface $em)
     {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);

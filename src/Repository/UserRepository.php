@@ -88,7 +88,7 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @return void
      */
-    public function getuserId($id)
+    public function getuserId($idUser)
     {
         // $query = $this->createQueryBuilder('b')
         //     ->where('b.id = :id')
@@ -120,21 +120,21 @@ class UserRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('u')
             ->join(Ticket::class, 't')
             ->andWhere('u.id = :id')
-            ->setParameter(':id', $id);
+            ->setParameter('id', $idUser);
         return $query->getQuery()->getResult();
     }
 
     /**
      * @return User[]
      */
-    public function Totaux($idUser, $total)
+    public function Totaux($idMatricule, $total)
     {
         $query = $this->createQueryBuilder('u')
             ->update()
             ->set('u.solde', 'u.solde + :total')
             ->where('u.id = :id')
             ->setParameter('total', $total)
-            ->setParameter('id', $idUser);
+            ->setParameter('id', $idMatricule);
         // echo $query;
         // die;
         return $query->getQuery()->getResult();
@@ -157,14 +157,14 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @return void
      */
-    public function InsertIntoUser($username, $total)
+    public function InsertIntoUser($idUser, $total)
     {
         $query = $this->createQueryBuilder('u')
             ->update()
             ->set('u.solde', 'u.solde + :total')
-            ->where('u.username = :username')
+            ->where('u.id = :idUser')
             ->setParameter('total', $total)
-            ->setParameter('username', $username);
+            ->setParameter('idUser', $idUser);
         return $query->getQuery()->getResult();
     }
     // /**

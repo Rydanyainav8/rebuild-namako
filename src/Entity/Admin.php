@@ -6,6 +6,8 @@ use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
@@ -34,6 +36,11 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Verifiez les mots de passe")
+     */
+    public $confirm_password;
 
     public function getId(): ?int
     {

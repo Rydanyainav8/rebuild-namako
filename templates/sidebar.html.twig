@@ -4,14 +4,14 @@
 	<header>
 		<div class="sidebar">
 			<header>
-				{# <a href="{{ path("index") }}">NAMAKO</a> #}
+				<a href="{{ path("home") }}">NAMAKO</a>
 			</header>
 			<ul id="navigation">
 				{% if is_granted('ROLE_ADMIN') %}
-					{# <li>
-						<a href="{{ path('listUser') }}">
+					<li>
+						<a href="{{ path('admin') }}">
 							<i class="far fa-user-shield"></i>Admin</a>
-					</li> #}
+					</li>
 				{% endif %}
 				<li>
 					<a href="{{ path('user') }}">

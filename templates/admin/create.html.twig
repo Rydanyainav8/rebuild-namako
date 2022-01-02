@@ -1,0 +1,39 @@
+{% include "sidebar.html.twig" %}
+
+{% form_theme form "bootstrap_5_layout.html.twig" %}
+
+{% block body %}
+<div class="container">
+	<div class="login">
+		<div class="logreg cart">
+			<h1>Inscrire un(e) administrateur(e)</h1>
+			<div class="tsipika4"></div>
+			{{form_start(form)}}
+			<div class="frmreg">
+				{{ form_label(form.username, 'Nom d\'utilisateur')}}
+				{{ form_errors(form.username)}}
+				{{ form_widget(form.username) }}
+			</div>
+			<div class="frmreg">
+				{{ form_label(form.password, 'Mot de passe')}}
+				{{ form_errors(form.password)}}
+				{{ form_widget(form.password) }}
+			</div>
+			<div class="frmreg">
+				{{ form_label(form.confirm_password, 'Confirmation mot de passe')}}
+				{{ form_errors(form.confirm_password)}}
+				{{ form_widget(form.confirm_password) }}
+			</div>
+			<div class="frmregx">
+				<label for="user_roles">Rôle</label>
+				{{ form_widget(form.roles) }}
+			</div>
+				<button class="btn-Edit" type="submit">Valider</button>
+				{{form_end(form)}}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/script.js"></script>
+{% endblock %}

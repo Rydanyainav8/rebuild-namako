@@ -90,10 +90,10 @@ class TicketRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
             ->andWhere('t.numero = :numero')
             ->setParameter('numero', $numero)
-            ->getQuery()
+            ->getQuery() 
             ->getOneOrNullResult();
     }
-
+    
     /**
      * @return void
      */
@@ -109,6 +109,49 @@ class TicketRepository extends ServiceEntityRepository
             $query->andWhere('t.numero LIKE :mots')
                 ->setParameter('mots', "%{$mots}%");
         }
+        return $query->getQuery()->getResult();
+    }
+    /**
+     * @return void
+     */
+    public function findbyActiveTicket()
+    {
+        $query = $this->createQueryBuilder('t')
+            ->select('COUNT(t)')
+            ->andWhere('t.active = 1');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+    /**
+     * @return void
+     */
+    public function getTotalTicket()
+    {
+        $query = $this->createQueryBuilder('t')
+            ->select('COUNT(t)');
+        // ->andWhere('c.Active = 1');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+    /**
+     * @return void
+     */
+    public function findbyInactiveTicket()
+    {
+        $query = $this->createQueryBuilder('t')
+            ->select('COUNT(t)')
+            ->andWhere('t.active = 0');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+    /**
+     * @return void
+     */
+
+    public function desactiveTiket($numero)
+    {
+        $query = $this->createQueryBuilder('t')
+            ->update()
+            ->set('t.active', 1)
+            ->where('t.numero = :numero')
+            ->setParameter('numero', $numero);
         return $query->getQuery()->getResult();
     }
 

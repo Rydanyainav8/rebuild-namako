@@ -41,14 +41,13 @@
 					</td>
 					<td>
 						<div class="iconCD">
-							{# <a href="{{ path("app_login", {id: user.id}) }}"> #}
-							<a href="{{ path("crediter", {id: user.id}) }}">
+							{# <a href="{{ path("app_login", {username: user.username}) }}"> #}
+							<a href="{{ path("crediter", {idUser: user.id}) }}">
 								<i class="fas fa-plus"></i>
 							</a>
-
- 							{# <a href="{{ path("debiter", {id: user.id}) }}">
+ 							<a href="{{ path("debiter", {id: user.id}) }}">
 								<i class="fas fa-minus"></i>
-							</a> #}
+							</a>
 						</div>
 					</td>
 					<td>

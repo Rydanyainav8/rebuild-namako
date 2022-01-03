@@ -11,35 +11,41 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_admin_provider:
+        admin:
             entity:
                 class: App\Entity\Admin
                 property: username
 
-        app_user_provider:
+        user:
             entity: 
                 class: App\Entity\User
                 property: username
+
+        chain_provider:
+            chain:  
+                providers: [admin, user]
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: app_user_provider
+            # pattern: ^/admin
+            lazy: true 
+            provider: chain_provider
             custom_authenticator: App\Security\AppUserAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
-        admin:
+        users:
+            pattern: ^/crediter/
             lazy: true
-            provider: app_admin_provider
-            custom_authenticator: App\Security\AppUserAuthenticator
-            logout:
+            provider: user
+            custom_authenticator:
+                - App\Security\AppUsersAuthenticator
+            logout: 
                 path: app_logout
-    
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -49,17 +55,21 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     role_hierarchy:
-        ROLE_SUPADMIN: ['ROLE_CATI', 'ROLE_BG']
+        ROLE_SUPADMIN: ['ROLE_CATI', 'ROLE_BGA']
+        ROLE_CATI: ['ROLE_CATI']
+        ROLE_BG: ['ROLE_BG']
+        ROLE_BGA: ['ROLE_BGA']
 
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS}
-        - { path: ^/admin, roles: ROLE_SUPADMIN } 
-        - { path: ^/crediter, roles: ROLE_USER }
-        # - { path: ^/debiter, roles: ROLE_USER }
+        - { path: ^/Admin, roles: ROLE_SUPADMIN } 
+        - { path: ^/crediter, roles: ROLE_BG }
+        - { path: ^/debiter, roles: ROLE_BG }
         - { path: ^/carnet, roles: ROLE_CATI }
         - { path: ^/ticket, roles: ROLE_CATI }
-        - { path: ^/user, roles: ROLE_BG}
-        - { path: ^/home, roles: [ROLE_SUPADMIN, ROLE_USER, ROLE_CATI] }
+        - { path: ^/adminbg, roles: ROLE_BGA }
+        # - { path: ^/user, roles: ROLE_BGA}
+        # - { path: ^/home, roles: [ROLE_SUPADMIN, ROLE_USER, ROLE_CATI] }
         
 when@test:
     security:

@@ -26,6 +26,7 @@
 			</div>
 			<div class="frmregx">
 				<label for="user_roles">Rôle</label>
+				{{ form_errors(form.roles) }}
 				{{ form_widget(form.roles) }}
 			</div>
 				<button class="btn-Edit" type="submit">Valider</button>

@@ -1,121 +1,184 @@
-*
-{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.carte
-{
-    border: 1px solid black;
+.carte {
+  border: 1px solid black;
 }
-img
-{
-    width: 80px;
-    height: 80px;
+img {
+  width: 80px;
+  height: 80px;
 }
-.qr
-{
-    text-align: center;
-    margin: 10px 20px;
+.qr {
+  text-align: center;
+  margin: 10px 20px;
 }
 .flexena,
-.Gflex
-{
-    display: flex;
+.Gflex {
+  display: flex;
 }
 .texte,
-.right
-{
-    float: right;
+.right {
+  float: right;
 }
 
-.left
+.left {
+  float: left;
+  text-align: center;
+}
+.rw {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.texte {
+  width: 400px;
+  max-height: 100px;
+  margin-left: 10px;
+  margin-top: 5px;
+  line-height: 20px;
+}
+.texte2 {
+  margin-left: 10px;
+}
+.noPrint {
+  background: none;
+  border: 1px solid #00b4d8;
+  border-radius: 5px;
+  color: #00b4d8;
+  cursor: pointer;
+  padding: 7px 7px;
+}
+.noPrintBack {
+  color: #00b4d8;
+}
+.noPrint:hover {
+  background: #00b4d8;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.fa-arrow-left {
+  font-size: 40px;
+  color: #c0c0c0;
+  transition: 0.4s;
+}
+.fa-arrow-left:hover {
+  color: #00b4d8;
+  transition: 0.4s;
+}
+.boton {
+  text-align: center;
+}
+.flexi {
+  display: flex;
+  width: 150px;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.noPrintBack {
+  flex: 1;
+}
+.noPrint {
+  flex: 1;
+}
+@media print {
+  .noPrint,
+  .noPrintBack {
+    display: none;
+  }
+}
+.left {
+  line-height: 2px;
+}
+
+.formgrg p {
+  text-align: center;
+}
+.formgrg label {
+  text-align: left;
+}
+.karatra {
+  padding: 10px -5px;
+  border: 1px solid rgba(0, 0, 0, 0.425);
+  border-radius: 5px;
+  line-height: 20px;
+}
+.formgrgI {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.formgrgM {
+  letter-spacing: 5px;
+}
+img.photoB {
+  width: 190px;
+  height: 175px;
+  border-radius: 50%;
+}
+
+img.qrB {
+  width: 90px;
+  height: 90px;
+  background-size: contain;
+  display: block;
+  position: relative;
+  left: 60%;
+  margin-top: -82px;
+  margin-bottom: 9px;
+}
+
+.tsipika3 {
+  width: 100%;
+  height: 2px;
+  background: gray;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.containerprint h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #399fff;
+  text-align: center;
+  color: white;
+}
+.containerprint h2,
+.containerprint p,
+.containerprint span,
+.containerprint label,
+.containerprintkaratra
 {
-    float: left;
+  font-family: "Ubuntu", sans-serif;
+}
+.containerprint {
+  width: 50%;
+}
+.borderid {
+  border: 1px solid rgba(0, 0, 0, 0.425);
+  width: 50%;
+}
+.formgrSymb img {
+  display: block;
+  width: 40px;
+  height: 30px;
+}
+
+.containerprintkaratra {
+  width: 500px;
+}
+.containerprintkaratra h2
+{
+    background-color: #00b4d8;
+    padding: 13px 15px;
     text-align: center;
+    color: #ffffff;
 }
-.rw
+.englobe
 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr)
-}
-.texte
-{
-    width: 400px;
-    max-height: 100px;
-    margin-left: 10px;
-    margin-top: 5px;
-    line-height: 20px;
-}
-.texte2
-{
-    margin-left: 10px;
-}
-.noPrint
-{
-    background: none;
-    border: 1px solid #00B4D8;
-    border-radius: 5px;
-    color: #00B4D8;
-    cursor: pointer;
-    padding: 7px 7px;
-}
-.noPrintBack
-{
-    color: #00B4D8;
-
-}
-.noPrint:hover
-{
-    background: #00B4D8;
-    color: white;
-    cursor: pointer;
-    border-radius: 3px;
-
-}
-.fa-arrow-left
-{
-    font-size: 40px;
-    color: #c0c0c0;
-    transition: 0.4s;
-}
-.fa-arrow-left:hover
-{
-    color: #00B4D8;
-    transition: 0.4s;
-
-}
-.boton
-{
-    text-align: center;
-}
-.flexi
-{
-    display: flex;
-    width: 150px;
-    text-align: center;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.noPrintBack
-{
-    flex: 1;
-}
-.noPrint
-{
-    flex: 1;
-}
-@media print
-{
-    .noPrint,
-    .noPrintBack
-    {
-        display: none;
-    }
-}
-.left
-{
-    line-height: 2px;
+    margin-left: 40px;
+    width: 260;
 }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Admin;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,14 +22,26 @@ class AdminType extends AbstractType
                 'choices' => [
                     'Administrateur' => "ROLE_SUPADMIN",
                     'Responsable Ticket & carnet' => "ROLE_CATI",
-                    'Responsable Utilisateur' => "ROLE_BG"
+                    'Responsable Utilisateur' => "ROLE_BGA"
                 ],
                 'expanded' => true,
-                'multiple' => true,
+                'multiple' => false,
                 'label' => 'Rôles',
-                'label_attr' => array('class' => 'checkbox-inline')
+                'label_attr' => array('class' => 'radio-inline')
             ])
         ;
+
+        $builder->get('roles')
+                ->addModelTransformer(new CallbackTransformer(
+                    function ($rolesArray)
+                    {
+                        return count($rolesArray)? $rolesArray[0]: null;
+                    },
+                    function ($rolesString)
+                    {
+                        return [$rolesString];
+                    }
+                ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

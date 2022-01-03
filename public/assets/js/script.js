@@ -11,7 +11,7 @@ window.onload = () => {
     let supprimer = document.querySelectorAll('.modal-trigger')
     for (let bouton of supprimer) {
         bouton.addEventListener("click", function () {
-            document.querySelector(".modal-footer a").href = `/user/supprimer/${this.dataset.id}`
+            document.querySelector(".modal-footer a").href = `/adminbg/supprimer/${this.dataset.id}`
             document.querySelector(".modal-content").innerText = `Confirmer la suppression de ${this.dataset.prenom}`
         })
     }

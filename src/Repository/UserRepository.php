@@ -139,6 +139,22 @@ class UserRepository extends ServiceEntityRepository
         // die;
         return $query->getQuery()->getResult();
     }
+
+    // /**
+    //  * @return User[]
+    //  */
+    // public function debiter($id, $sommetotal)
+    // {
+    //     $query = $this->createQueryBuilder('u')
+    //         ->update()
+    //         ->set('u.solde', 'sommetotal')
+    //         ->where('u.id = :id')
+    //         ->setParameter('id', $id)
+    //         ->setParameter('sommetotal', $sommetotal)
+    //         ;
+    //     return $query->getQuery()->getResult();
+    // }
+
     /**
      * @return void
      */

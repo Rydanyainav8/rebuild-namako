@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class CreDebController extends AbstractController
 {
     /**
@@ -125,7 +126,7 @@ class CreDebController extends AbstractController
     /**
      * @Route("/debiter/{id}", name="debiter")
      */
-    public function debiter(User $user, Request $request, EntityManagerInterface $em): Response
+    public function debiter(User $user,Request $request, EntityManagerInterface $em, UserRepository $userRepo): Response
     {
         $form = $this->createForm(MontantDebType::class);
         $montant = $form->handleRequest($request);
@@ -143,11 +144,15 @@ class CreDebController extends AbstractController
 
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('app_logout');
         }
         return $this->render("cre_deb/debiter.html.twig", [
             'form' => $form->createView(),
         ]);
+        return $this->render("cre_deb/debiter.html.twig", [
+            'form' => $form->createView(),
+        ]);
+         
     }
 
 

@@ -7,6 +7,8 @@
     padding: 0;
     list-style: none;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+
 }
 body
 {
@@ -14,7 +16,7 @@ body
   background: #F3F3F3;
 }
 
-.subcontainer2 p,
+/* .subcontainer2 p,
 .subcontainer2 h4,
 .pagination, .Filt,
 #filters,
@@ -37,7 +39,7 @@ h3,
 .container span
 {
   font-family: 'Ubuntu', sans-serif;
-}
+} */
 
 .sidebar
 {
@@ -234,7 +236,29 @@ i.fal.fa-sign-out-alt:hover
   font-family: 'Ubuntu', sans-serif;
   font-size: 20px;
 }
+.btn-log
+{
+  position: relative;
+  float: right;
+  border: 1px solid #00B4D8;
+  border-radius: 5px;
+  color: #00B4D8;
+  text-align: center;
+  padding: 10px 25px 10px 25px;
+  margin-top: 70px;
+  margin-right: 0;
+  background-color: #f1f1f1;
+  transform: scale(1);
+  transition: all 0.3s;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+}
 .btn-Edit:hover {
+  color: #fff;
+  background-color: #00B4D8;
+  transition: all 0.3s;
+}
+.btn-log:hover {
   color: #fff;
   background-color: #00B4D8;
   transition: all 0.3s;
@@ -362,7 +386,7 @@ form div
 
 .searchBox {
   border: 0;
-  padding: 0.6rem 35rem 0.6rem 0;
+  padding: 0.6rem 11rem 0.6rem 0;
   flex: 1;
   background: #f1f1f1;
   border-radius: 3px;
@@ -394,6 +418,7 @@ form div
 .subcontainer2
 {
   padding: 10px 36px 20px 36px;
+  width: 450px;
 }
 
 .cart
@@ -434,7 +459,8 @@ form div
   margin-top: 40px;
   margin-left: 20px;
 }
-.tsipika
+.tsipika,
+.tsipika3
 {
   width: 80%;
   height: 2px;
@@ -446,16 +472,16 @@ form div
   height: 2px;
   background: #2c2c2c21;
 }
-.tsipika3
+.tsipikalog
 {
-  width: 80%;
+  width: 100%;
   height: 2px;
   background: #2c2c2c21;
+  margin-top: 10px;
 }
 .tsipika4
 {
   display: block;
-
   height: 2px;
   background: #2c2c2c21;
 }
@@ -547,10 +573,12 @@ form div
 }
 .log
 {
-  padding: 70px 90px;
+  padding: 10px 30px;
   text-align: left;
   line-height: 40px;
   border-radius: 5px;
+  height: 400px;
+  width: 300px;
 }
 .logreg
 {
@@ -862,4 +890,25 @@ option
 .fa-arrow-left
 {
   font-size: 40px;
+}
+.soratra
+{
+  position: relative;
+  float: right;
+  color: #d70000;
+  padding: 10px 15px;
+  border: 1px solid;
+  border-radius: 3px;
+}
+.soratra2
+{
+  color: #d70000;
+}
+.logcontent
+{
+  margin-top: 50px;
+}
+.log form
+{
+  margin-top: 30px;
 }

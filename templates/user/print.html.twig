@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/assets/css/print.css"/>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+
+<body>
+
+	<div class="flexi">
+		<div class="noPrintBack">
+			<a href="{{path("user")}}">
+				<i class="fas fa-arrow-left"></i>
+			</a>
+		</div>
+		<div class="boton">
+			<button onclick="window.print()" class="noPrint">Imprimer</button>
+		</div>
+	</div>
+
+	<div class="containerprintkaratra borderid">
+		<h2>KARATRA NAMAKO</h2>
+		<div class="formgrgI">
+			<img class="photoB" src="{{ absolute_url(asset('uploads/images/' ~ user.pdp)) }}">
+		</div>
+		<center>
+			<div class="tsipika3"></div>
+		</center>
+
+		<div class="englobe">
+			<div class="formgrg">
+				<strong>
+					<label class="tes">Anarana:
+					</label>
+				</strong>
+				<span>{{user.lastname}}</span>
+			</div>
+			<div class="formgrg">
+				<strong>
+					<label>Fanampin'anarana:
+					</label>
+				</strong>
+				<span>{{user.firstname}}</span>
+			</div>
+			<div class="formgrSymb">
+				<strong>
+					<label>Lahy/vavy:
+					</label>
+				</strong>
+				{# <span>{{badge.gender}}</span> #}
+				{% if user.gender == 'Homme' %}
+					<img src="{{ absolute_url(asset('assets/css/mars-solid.svg')) }}">
+				{% else %}
+					<img src="{{ absolute_url(asset('assets/css/venus-solid.svg')) }}">
+				{% endif %}
+			</div>
+		</div>
+
+
+		<div class="formgrgImg">
+			<img class="qrB" src="{{ qr_code_data_uri(user.matricule) }}">
+		</div>
+	</div>
+</body>

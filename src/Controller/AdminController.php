@@ -13,7 +13,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin", name="admin_")
+ * @Route("/Admin", name="admin_")
  */
 class AdminController extends AbstractController
 {
@@ -52,5 +52,15 @@ class AdminController extends AbstractController
         return $this->render('admin/create.html.twig',[
             'form' => $form->createView()
         ]);
+    }
+    /**
+     * @Route("/supprimer/{id}", name="supprimer")
+     */
+    public function supprimer(Admin $admin)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($admin);
+        $em->flush();
+        return $this->redirectToRoute('admin_index');
     }
 }

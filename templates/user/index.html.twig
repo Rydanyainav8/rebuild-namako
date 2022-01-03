@@ -11,10 +11,17 @@
 				<i class="far fa-user-plus fa-2x"></i>
 			</a>
 			{# <a href="{{ path("app_login") }}" class="btn-Edit">Connexion</a> #}
+			{% if app.user %}
+				<div class="soratra">Connexion de
+					{{ app.user.username }}
+				</div>
+			{% endif %}
+
+
 			<div class="searchContainer">
 				{{ form_start(form)}}
 				<i class="fa fa-search searchIcon"></i>
-				{{ form_row(form.mots, {'attr':{'placeholder':'Rechercher...','class':'searchBox'}}) }}
+				{{ form_row(form.mots, {'attr':{'placeholder':'Matricule à rechercher...','class':'searchBox'}}) }}
 				<input type="submit" value="Chercher" class="searchButton">
 				{{ form_end(form)}}
 			</div>

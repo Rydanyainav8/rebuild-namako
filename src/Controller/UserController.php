@@ -18,14 +18,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-/**
- * @Route("/user")
- */
+
 class UserController extends AbstractController
 {
 
     /**
-     * @Route("/", name="user")
+     * @Route("user/", name="user")
      */
     public function index(UserRepository $userRepo, GenderRepository $genderRepo, Request $request, QrCodeController $qrcode): Response
     {
@@ -77,7 +75,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/create", name="createUser")
+     * @Route("adminbg/create", name="createUser")
      */
     public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, UserPasswordHasherInterface $hasher): Response
     {
@@ -110,19 +108,20 @@ class UserController extends AbstractController
             $user->setPassword($hash);
             $user->setMatricule($daty);
             $user->setSolde(0);
+            $user->setRoles(array('ROLE_BG'));
             $user->setQr(0);
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('user');
         }
 
-        return $this->render('user/createEdit.html.twig', [
+        return $this->render('user/create.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/edit/{id}", name="edituser")
+     * @Route("adminbg/edit/{id}", name="edituser")
      */
     public function edit(User $user, Request $request, SluggerInterface $slugger, EntityManagerInterface $em)
     {
@@ -150,12 +149,12 @@ class UserController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('user');
         }
-        return $this->render('user/createEdit.html.twig', [
+        return $this->render('user/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
     /**
-     * @Route("/supprimer/{id}", name="supprimerUser")
+     * @Route("adminbg/supprimer/{id}", name="supprimerUser")
      */
     public function supprimer(User $User)
     {
@@ -164,5 +163,16 @@ class UserController extends AbstractController
         $em->flush();
         $this->addFlash('message', 'Supprimeé avec succès');
         return $this->redirectToRoute('user');
+    }
+    /**
+     * @Route("adminbg/print/{id}", name="printBadge")
+     */
+    public function printBadge($id, UserRepository $userRepo): Response
+    {
+        $userbyid = $userRepo->find($id);
+
+        return $this->render('user/print.html.twig', [
+            'user' => $userbyid
+        ]);
     }
 }

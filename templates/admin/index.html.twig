@@ -18,14 +18,14 @@
 				<tbody>
 					{% for admin in admins %}
 						<tr>
-							<td>{{ admin.adminname }}</td>
+							<td>{{ admin.username }}</td>
 							<td>
 								{% for unrole in admin.roles %}
-									{% if unrole == 'ROLE_ADMIN' %}
+									{% if unrole == 'ROLE_SUPADMIN' %}
 										<li>Super Administrateur</li>
 									{% elseif unrole == 'ROLE_CATI' %}
 										<li>Responsable Ticket & Carnet</li>
-									{% elseif unrole == 'ROLE_BG' %}
+									{% elseif unrole == 'ROLE_BGA' %}
 										<li>Responsable Bagde</li>
 									{% elseif unrole == 'ROLE_USER' %}
 										<li class="hide">Respo</li>

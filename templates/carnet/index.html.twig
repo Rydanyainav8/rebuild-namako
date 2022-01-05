@@ -28,9 +28,15 @@
 									<a href="{{ path('editCarnet',{id: carnet.id}) }}">
 										<i class="far fa-edit"></i>
 									</a>
-									<a href="{{ path('showCarnet',{id: carnet.id}) }}">
-										<i class="far fa-print"></i>
-									</a>
+									{% if carnet.active == true %}
+										<i class="fas fa-print-slash"></i>
+									{% else %}
+										<a href="{{ path('showCarnet',{id: carnet.id}) }}">
+											<i class="far fa-print"></i>
+										</a>
+									{% endif %}
+
+
 								</td>
 							</tr>
 						{% endfor %}

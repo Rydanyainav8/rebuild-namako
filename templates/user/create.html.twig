@@ -1,41 +1,47 @@
 {% include "sidebar.html.twig" %}
+{% form_theme form "bootstrap_5_layout.html.twig" %}
 
 {% block body %}
 	<div class="container">
-		<div class="subcontainer">
+		<div class="subcontaineradd">
 			<div class="subcontainer2 cart">
 				<div class="row">
-					<h3>Ajouter un(e) person(ne)
-					</h3>
+					<h1>Ajouter un(e) person(ne)
+					</h1>
 					<div class="tsipika2"></div>
 
 					<div class="col-md-6 offset-md-3">
+
 						{{ form_start(form) }}
-						<div class='form-group'>
-							<label for="badges_lastname">Nom</label>
-							{{form_widget(form.lastname,{'attr':{'class':'form-control'}})}}
-						</div>
-						<div class='form-group'>
-							<label for="badges_firstname">Prénom</label>
-							{{form_widget(form.firstname,{'attr':{'class':'form-control'}})}}
-						</div>
-						<div class='form-group'>
-							<label for="badges_age">Age</label>
-							{{form_widget(form.age,{'attr':{'class':'form-control'}})}}
-						</div>
-						<div class="chB">
-							<label for="badges_gender">Genre</label>
-							{{ form_widget(form.gender,{'attr':{'class':'form-control'}}) }}
+						<div class="formu">
+							<div class='form-group'>
+								<label for="users_lastname">Nom</label>
+								{{form_widget(form.lastname,{'attr':{'class':'form-control'}})}}
+							</div>
+							<div class='form-group'>
+								<label for="users_firstname">Prénom</label>
+								{{form_widget(form.firstname,{'attr':{'class':'form-control'}})}}
+							</div>
+							<div class='form-group'>
+								<label for="users_age">Age</label>
+								{{form_widget(form.age,{'attr':{'class':'form-control'}})}}
+							</div>
+							<div class="chB">
+								<label for="users_gender">Genre</label>
+								{{ form_widget(form.gender) }}
+							</div>
 						</div>
 						<div class="form-file">
-							<label for="badges_imageFile" class="btn-Up">Image</label>
+							<label for="users_imageFile">
+								<i class="fas fa-camera"></i>
+							</label>
 							{{ form_widget(form.imageFile,{'attr':{'class':'form-control', 'multiple accept':'image/png, image/jpeg'}}) }}
 							<div class="form-file-path"></div>
 						</div>
 						<div class="ch" style="display: none">
 							{{ form_widget(form.qr, {'attr':{'value':'0'}}
 							) }}
-						</div>			
+						</div>
 						<div class="ch" style="display: none">
 							{{ form_widget(form.password) }}
 						</div>

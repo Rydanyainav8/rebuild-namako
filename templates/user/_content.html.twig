@@ -41,28 +41,26 @@
 						</div>
 					</td>
 					<td>
-						{# {% if app.user %}
-													{% if app.user.roles == 'ROLE_BGA' %}
-														<div class="soratra2">Déconnexion requis!</div>
-													{% else %}
-														<div class="iconCD">
-															<a href="{{ path("crediter", {idUser: user.id}) }}">
-																<i class="fas fa-plus"></i>
-															</a>
-															<a href="{{ path("debiter", {id: user.id}) }}">
-																<i class="fas fa-minus"></i>
-															</a>
-														</div>
-													{% endif %}
-												{% endif %} #}
-						<div class="iconCD">
-							<a href="{{ path("crediter", {idUser: user.id}) }}">
-								<i class="fas fa-plus"></i>
-							</a>
-							<a href="{{ path("debiter", {id: user.id}) }}">
-								<i class="fas fa-minus"></i>
-							</a>
-						</div>
+						{% if app.user %}
+								<div class="soratra2">Déconnexion requis!</div>
+						{% else %}
+							<div class="iconCD">
+								<a href="{{ path("crediter", {idUser: user.id}) }}">
+									<i class="fas fa-plus"></i>
+								</a>
+								<a href="{{ path("debiter", {id: user.id}) }}">
+									<i class="fas fa-minus"></i>
+								</a>
+							</div>
+						{% endif %}
+						{# <div class="iconCD">
+													<a href="{{ path("crediter", {idUser: user.id}) }}">
+														<i class="fas fa-plus"></i>
+													</a>
+													<a href="{{ path("debiter", {id: user.id}) }}">
+														<i class="fas fa-minus"></i>
+													</a>
+												</div> #}
 					</td>
 					<td>
 						<a href="{{ path("printBadge", {id: user.id}) }}">

@@ -27,7 +27,6 @@ class CreDebController extends AbstractController
     public function Credtier($idUser, UserRepository $userRepo, TicketRepository $ticketRepo, Request $request): Response
     {
         // $request->getSession()->invalidate();
-
         $limit = 18;
         $page = (int)$request->query->get("page", 1);
         $filters = $request->get("carnets");
@@ -54,6 +53,7 @@ class CreDebController extends AbstractController
                 )
             ]);
         }
+
         return $this->render(
             "cre_deb/crediter.html.twig",
             compact('tickets', 'users', 'total', 'limit', 'page', 'form')

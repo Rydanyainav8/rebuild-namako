@@ -278,7 +278,11 @@
   color: #787878 !important;
   border-color: #c8c8c8;
 }
-
+.logx
+{
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
 .form-switch {
   position: relative;
   pointer-events: auto;

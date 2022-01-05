@@ -31,7 +31,10 @@ class UsersType extends AbstractType
             ->add('age')
             ->add('gender', EntityType::class, [
                 'class' => Gender::class,
-                'choice_label' => 'sexe'
+                'choice_label' => 'sexe',
+                'expanded' => true,
+                'multiple' => false,
+                'label_attr' => array('class' => 'radio-inline')
             ])
             ->add('imageFile', FileType::class, [
                 'mapped' => false,

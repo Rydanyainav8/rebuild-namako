@@ -42,7 +42,7 @@
 					</td>
 					<td>
 						{% if app.user %}
-								<div class="soratra2">Déconnexion requis!</div>
+							<div class="soratra2">Déconnexion requis!</div>
 						{% else %}
 							<div class="iconCD">
 								<a href="{{ path("crediter", {idUser: user.id}) }}">
@@ -54,23 +54,26 @@
 							</div>
 						{% endif %}
 						{# <div class="iconCD">
-													<a href="{{ path("crediter", {idUser: user.id}) }}">
-														<i class="fas fa-plus"></i>
-													</a>
-													<a href="{{ path("debiter", {id: user.id}) }}">
-														<i class="fas fa-minus"></i>
-													</a>
-												</div> #}
+																			<a href="{{ path("crediter", {idUser: user.id}) }}">
+																				<i class="fas fa-plus"></i>
+																			</a>
+																			<a href="{{ path("debiter", {id: user.id}) }}">
+																				<i class="fas fa-minus"></i>
+																			</a>
+																		</div> #}
 					</td>
 					<td>
 						<a href="{{ path("printBadge", {id: user.id}) }}">
 							<i class="far fa-print"></i>
 						</a>
 						<a href="{{ path("edituser", {id: user.id}) }}">
-							<i class="far fa-edit"></i>
+							<i class="far fa-user-edit"></i>
+						</a>
+						<a href="{{path("listticket", {id: user.id}) }}">
+							<i class="far fa-list-alt"></i>
 						</a>
 						<a href="#" class="btnS modal-trigger" data-target="modal-delete" data-id="{{ user.id }}" data-prenom="{{ user.firstname }}">
-							<i class="far fa-trash-alt"></i>
+							<i class="far fa-user-minus"></i>
 						</a>
 					</td>
 				</tr>

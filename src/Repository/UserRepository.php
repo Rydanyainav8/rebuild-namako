@@ -183,6 +183,25 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('idUser', $idUser);
         return $query->getQuery()->getResult();
     }
+
+
+    /**
+     * @return Ticket[]
+     */
+    public function getTicketByUserId($id)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT u, t
+            FROM App\Entity\Ticket t
+            INNER JOIN t.badge u
+            WHERE t.badge = :id'
+        )
+            ->setParameter('id', $id);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

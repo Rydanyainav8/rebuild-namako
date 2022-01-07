@@ -1,0 +1,31 @@
+{% include "sidebar.html.twig" %}
+
+{% block body %}
+	<div class="container marge">
+		<div class="responsive-table cartborder">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Numéro</th>
+						<th>Active</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for ticket in listTickets %}
+						<tr>
+							<td>{{ticket.numero}}</td>
+							<td>
+								<label class="form-switch mt-2">
+									<input type="checkbox" {{ (ticket.active) ? 'checked': ''}} disabled="true">
+									<span class="slider thin"></span>
+								</label>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+
+			</table>
+		</div>
+
+	</div>
+{% endblock %}

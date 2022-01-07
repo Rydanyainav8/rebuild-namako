@@ -154,6 +154,20 @@ class TicketRepository extends ServiceEntityRepository
             ->setParameter('numero', $numero);
         return $query->getQuery()->getResult();
     }
+    /**
+     * @return void
+     */
+    public function UseridInTicket($idUser, $numero)
+    {
+        $query = $this->createQueryBuilder('t')
+            ->update()
+            ->set('t.badge', ':id')
+            ->where('t.numero = :numero')
+            ->setParameter('id', $idUser)
+            ->setParameter('numero', $numero)
+        ;
+        return $query->getQuery()->getResult();
+    }
 
     // /**
     //  * @return Ticket[] Returns an array of Ticket objects

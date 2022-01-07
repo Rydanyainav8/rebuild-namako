@@ -1,7 +1,7 @@
 {% include "sidebar.html.twig" %}
 
 {% block body %}
-	<div class="container">
+	<div class="container marge">
 		<div class="responsive-table cartborder">
 			<table class="table striped">
 				<table class="table striped">
@@ -25,9 +25,11 @@
 								</td>
 								<td>{{ carnet.createdAt | date("d/m/Y")}}</td>
 								<td>
+									{% if carnet.active == false %}
 									<a href="{{ path('editCarnet',{id: carnet.id}) }}">
 										<i class="far fa-edit"></i>
 									</a>
+									{% endif %}
 									{% if carnet.active == true %}
 										<i class="fas fa-print-slash"></i>
 									{% else %}

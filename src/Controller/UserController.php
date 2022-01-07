@@ -175,4 +175,13 @@ class UserController extends AbstractController
             'user' => $userbyid
         ]);
     }
+    /**
+     * @Route("adminbg/listTicket/{id}", name="listticket")
+     */
+    public function listTicket(User $user, UserRepository $userRepo): Response
+    {
+        $listTickets = $userRepo->getTicketByUserId($user);
+
+        return $this->render('user/listTicket.html.twig', compact('listTickets'));
+    }
 }

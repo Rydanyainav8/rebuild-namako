@@ -118,6 +118,7 @@ class CreDebController extends AbstractController
         $ticketService->getFullCart();
 
         $ticketService->add($numero);
+        $ticketRepo->UseridInTicket($idUser, $numero);
         $ticketRepo->desactiveTiket($numero);
         return $this->render("cre_deb/addSuccess.html.twig", compact('idUser'));
         // return $this->redirectToRoute("panier", compact('idUser')); 
@@ -141,7 +142,6 @@ class CreDebController extends AbstractController
                 return $this->redirectToRoute('user');
             }
             $user->setSolde($newSomme);
-
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('app_logout');

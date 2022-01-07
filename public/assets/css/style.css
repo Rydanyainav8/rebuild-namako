@@ -135,7 +135,6 @@ h3,
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     /* transform: scale(1.1); */
-
 }
 
 .sidebar ul a i
@@ -233,7 +232,6 @@ i.fal.fa-sign-out-alt:hover
   background-color: #f1f1f1;
   transform: scale(1);
   transition: all 0.3s;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 20px;
 }
 .btn-log
@@ -309,18 +307,23 @@ img.qr
   color: #7a7a7a;
   margin-right: 20px;
 }
-.fa-edit
+.fa-edit,
+.fa-user-edit,
+.fa-user-minus
 {
   color: #8a8d8d;
   margin-right: 20px;
-
 }
 .fa-trash-alt
 {
   color: #D11515;
   margin-right: 20px;
-
 }
+.fa-user-minus:hover
+{
+  color: #D11515;
+}
+
 .fa-search
 {
   color: #8a8d8d;
@@ -331,7 +334,9 @@ img.qr
   color: #8a8d8d;
   margin-right: 20px;
 }
-.fa-edit:hover, .fa-print:hover
+.fa-edit:hover, 
+.fa-print:hover,
+.fa-user-edit:hover
 {
   color: #00B4D8;
 }
@@ -344,7 +349,8 @@ img.qr
 .fa-plus-square,
 .fa-plus,
 .fa-minus,
-.fa-arrow-left
+.fa-arrow-left,
+.fa-list-alt
 {
   color: #8a8d8d;
   margin-right: 20px;
@@ -354,7 +360,8 @@ img.qr
 .fa-plus-square:hover,
 .fa-plus:hover,
 .fa-minus:hover,
-.fa-arrow-left:hover
+.fa-arrow-left:hover,
+.fa-list-alt:hover
 {
   color: #00B4D8;
 }
@@ -387,7 +394,7 @@ form div
 
 .searchBox {
   border: 0;
-  padding: 0.6rem 11rem 0.6rem 0;
+  padding: 0.6rem 5rem 0.6rem 0;
   flex: 1;
   background: #f1f1f1;
   border-radius: 3px;
@@ -466,11 +473,11 @@ form div
 {
   display: block;
 }
-.Filt
+/* .Filt
 {
-  margin-top: 40px;
+  margin-top: 50px;
   margin-left: 20px;
-}
+} */
 .tsipika,
 .tsipika3
 {
@@ -977,4 +984,124 @@ option
 span.chiffre
 {
   font-size: 150px;
+}
+.marge
+{
+  padding-top: 20px;
+}
+.btn-addtxt
+{
+  position: absolute;
+  float: left;
+  border: 1px solid #00B4D8;
+  border-radius: 5px;
+  color: #00B4D8;
+  text-align: center;
+  padding: 10px 25px 10px 25px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #f1f1f1;
+  transform: scale(1);
+  transition: all 0.3s;
+  font-size: 20px
+}
+.btn-addtxt:hover
+{
+  color: #fff;
+  background-color: #00B4D8;
+  transition: all 0.3s;
+}
+@media screen and (min-width: 993px) 
+{
+  .Filt
+  {
+  margin-top: 60px;
+  margin-left: 0;
+  } 
+  .btn-addtxt
+  {
+    position: absolute;
+    float: left;
+    display: block;
+    font-size: 1vw;
+  }
+  .searchBox
+  {
+    padding: 0.6rem 35rem 0.6rem 0;
+  }
+}
+@media screen and (max-width: 992px)
+{
+
+  .btn-addtxt
+  {
+    position: absolute;
+    float: left;
+    display: block;
+    font-size: 15px;
+    padding: 10px 8px 10px 8px;
+  } 
+  .Filt
+  {
+    margin-top: 50px;
+    margin-left: 0;
+  }
+  img.qr
+  {
+    width: 40px;
+    height: 40px;
+  }
+  .form-switch .slider::before
+  {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+  .sidebar
+  {
+    width: 175px;
+  }
+  .sidebar header a
+  {
+    font-size: 38px;
+  }
+  .container
+  {
+    margin-left: 185px;
+  }  
+  .sidebar ul li:hover a
+  {
+    padding-left: 10px;
+  }
+  .logoNamako
+  {
+    transform: translateY(0);
+  }
+}
+
+@media  screen and (max-width: 768px) 
+{
+  .btn-addtxt
+  {
+    position: absolute;
+    float: left;
+    display: block;
+    font-size: 1vw;
+  } 
+  .Filt
+  {
+    margin-top: 50px;
+    margin-left: 0;
+  }
+  .sidebar
+  {
+    width: 175px;
+  } 
+  .sidebar header a
+  {
+    font-size: 35px;
+  }
+  .container
+  {
+    margin-left: 175px;
+  }
 }

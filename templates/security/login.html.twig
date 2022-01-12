@@ -21,24 +21,14 @@
 					{% endif %}
 
 					{# <label for="inputUsername">Nom d'utilisateur</label> #}
-					<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control logx" autocomplete="username" placeholder="Nom d'utilisateur"required autofocus>
-					{# <label for="inputPassword">Mot de passe</label> #}
-					<input type="password" name="password" id="inputPassword" class="form-control logx" placeholder="Mot de passe" autocomplete="current-password">
-
 					<input
-					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-					{#
-													        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-													        See https://symfony.com/doc/current/security/remember_me.html
-													
-													        <div class="checkbox mb-3">
-													            <label>
-													                <input type="checkbox" name="_remember_me"> Remember me
-													            </label>
-													        </div>
-													    #}
-
+					type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control logx" autocomplete="username" placeholder="Nom d'utilisateur" required autofocus>
+					{# <label for="inputPassword">Mot de passe</label> #}
+					<input type="password" name="password" id="password-field" class="form-control logx" placeholder="Mot de passe" autocomplete="current-password">
+					<div class="password-icon">
+						<span toggle="#password-field" class="fas fa-eye toggle-password"></span>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 					<button class="btn-log" type="submit">
 						Connexion
 					</button>
@@ -49,3 +39,8 @@
 	</div>
 
 {% endblock %}
+{% block javascripts %}
+	{# // <script src="https://unpkg.com/feather-icons"></script> #}
+	<script src="/assets/js/script.js"></script>
+{% endblock %}
+-

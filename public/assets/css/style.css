@@ -302,10 +302,11 @@ img.qr
     height: 70px;
     background-size: contain;
 }
-.fa-eye
+.fa-eye,
+.fa-eye-slash
 {
   color: #7a7a7a;
-  margin-right: 20px;
+  cursor: pointer;
 }
 .fa-edit,
 .fa-user-edit,
@@ -336,7 +337,7 @@ img.qr
 }
 .fa-edit:hover, 
 .fa-print:hover,
-.fa-user-edit:hover
+.fa-user-edit:hoverfa
 {
   color: #00B4D8;
 }
@@ -749,27 +750,34 @@ img.qrB
 .bord label input:focus {
   border-color: #ff4754;
 }
-.bord label .password-icon
+.password-icon
 {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  position: absolute;
   top: 50%;
   left: 10rem;
   transform: translateY(-50%);
   width: 20px;
   color: #242424;
-  transition: all 0.2s;
+  transition: all 0.2s; */
+  position: relative;
+  float: right;
+  z-index: 2;
+  margin-top: -60px;
+  margin-right: 10px;
 }
-
-.bord label .password-icon:hover {
+.admin
+{
+  margin-top: -35px;
+}
+/* .password-icon:hover {
   cursor: pointer;
   color: #00B4D8;
 }
 
-.bord label .password-icon .fa-eye-slash {
+.password-icon .fa-eye-slash {
   display: none;
-}
+} */
 .invalid-feedback
 {
   color: red;
@@ -1027,7 +1035,7 @@ span.chiffre
   }
   .searchBox
   {
-    padding: 0.6rem 35rem 0.6rem 0;
+    padding: 0.6rem 16rem 0.6rem 0;
   }
 }
 @media screen and (max-width: 992px)

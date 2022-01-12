@@ -18,6 +18,9 @@
 				{{ form_label(form.password, 'Mot de passe')}}
 				{{ form_errors(form.password)}}
 				{{ form_widget(form.password) }}
+				<div class="password-icon admin">
+					<span toggle="#admin_password" class="fas fa-eye toggle-password"></span>
+				</div>
 			</div>
 			<div class="frmreg">
 				{{ form_label(form.confirm_password, 'Confirmation mot de passe')}}

@@ -17,18 +17,29 @@ window.onload = () => {
     }
 }
 
-const eye = document.querySelector(".fa-eye");
-const eyeoff = document.querySelector(".fa-eye-slash");
-const passwordField = document.querySelector("input[type=password]");
+// const eye = document.querySelector(".fa-eye");
+// const eyeoff = document.querySelector(".fa-eye-slash");
+// const passwordField = document.querySelector("input[type=password]");
 
-eye.addEventListener("click", () => {
-    eye.style.display = "none";
-    eyeoff.style.display = "block";
-    passwordField.type = "text";
-});
+// eye.addEventListener("click", () => {
+//     eye.style.display = "none";
+//     eyeoff.style.display = "block";
+//     passwordField.type = "text";
+// });
 
-eyeoff.addEventListener("click", () => {
-    eyeoff.style.display = "none";
-    eye.style.display = "block";
-    passwordField.type = "password";
-});
+// eyeoff.addEventListener("click", () => {
+//     eyeoff.style.display = "none";
+//     eye.style.display = "block";
+//     passwordField.type = "password";
+// });
+
+$(".toggle-password").click(function() {
+
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+      input.attr("type", "text");
+    } else {
+      input.attr("type", "password");
+    }
+  });

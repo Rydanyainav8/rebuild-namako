@@ -31,7 +31,8 @@
 									</a>
 									{% endif %}
 									{% if carnet.active == true %}
-										<i class="fas fa-print-slash"></i>
+										{# <i class="fas fa-print-slash"></i> #}
+										<p class="muted">Non disponible</p>
 									{% else %}
 										<a href="{{ path('showCarnet',{id: carnet.id}) }}">
 											<i class="far fa-print"></i>

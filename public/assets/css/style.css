@@ -576,9 +576,10 @@ form div
 .logoNamako
 {
   text-align: center;
-  -ms-transform: translateY(-50%);
-  transform: translateY(50%);
+  -ms-transform: translateY(-40%);
+  transform: translateY(40%);
 }
+
 .login
 {
   /* position: relative;
@@ -589,7 +590,7 @@ form div
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 98vh;
 }
 .log
 {
@@ -1019,6 +1020,14 @@ span.chiffre
   background-color: #00B4D8;
   transition: all 0.3s;
 }
+/* @media screen and (min-width: 1366px)
+{
+  .logoNamako img
+  {
+    width: 30%;
+    height: 30%;
+  }
+} */
 @media screen and (min-width: 993px) 
 {
   .Filt
@@ -1036,6 +1045,11 @@ span.chiffre
   .searchBox
   {
     padding: 0.6rem 16rem 0.6rem 0;
+  }
+  .logoNamako img
+  {
+    width: 25vw;
+    height: 40vh;
   }
 }
 @media screen and (max-width: 992px)
@@ -1084,6 +1098,7 @@ span.chiffre
   {
     transform: translateY(0);
   }
+
 }
 
 @media  screen and (max-width: 768px) 
@@ -1111,5 +1126,16 @@ span.chiffre
   .container
   {
     margin-left: 175px;
+  }
+  .logoNamako img
+  {
+    width: 50vw;
+    height: 40vh;
+  }
+  i.fal.fa-sign-out-alt
+  {
+    position: absolute;
+    bottom: 10px;
+    left: 140px;
   }
 }

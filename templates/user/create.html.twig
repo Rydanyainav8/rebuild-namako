@@ -15,24 +15,25 @@
 						{{ form_start(form) }}
 						<div class="formu">
 							<div class='form-group'>
-								<label for="users_lastname">Nom</label>
+								<label for="users_create_lastname">Nom</label>
 								{{form_widget(form.lastname,{'attr':{'class':'form-control'}})}}
 							</div>
 							<div class='form-group'>
-								<label for="users_firstname">Prénom</label>
+								<label for="users_create_firstname">Prénom</label>
 								{{form_widget(form.firstname,{'attr':{'class':'form-control'}})}}
 							</div>
 							<div class='form-group'>
-								<label for="users_age">Age</label>
+								<label for="users_create_age">Age</label>
 								{{form_widget(form.age,{'attr':{'class':'form-control'}})}}
 							</div>
 							<div class="chB">
-								<label for="users_gender">Genre</label>
+								<label for="users_create_gender">Genre</label>
 								{{ form_widget(form.gender) }}
 							</div>
 						</div>
 						<div class="form-file">
-							<label for="users_imageFile">
+							{# {{ form_errors(form.imageFile) }} #}
+							<label for="users_create_imageFile">
 								<i class="fas fa-camera"></i>
 							</label>
 							{{ form_widget(form.imageFile,{'attr':{'class':'form-control', 'multiple accept':'image/png, image/jpeg'}}) }}

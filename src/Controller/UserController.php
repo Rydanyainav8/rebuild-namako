@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\MontantDebType;
 use App\Form\SearchUserType;
+use App\Form\UsersCreateType;
 use App\Form\UsersType;
 use App\Repository\GenderRepository;
 use App\Repository\TicketRepository;
@@ -80,7 +81,7 @@ class UserController extends AbstractController
     public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, UserPasswordHasherInterface $hasher): Response
     {
         $user = new User();
-        $form = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(UsersCreateType::class, $user);
         $form->handleRequest($request);
         $daty = date("YmdHis");
         // $fo = $form['password']->getData();
